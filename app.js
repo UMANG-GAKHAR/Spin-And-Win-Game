@@ -1,4 +1,7 @@
-var config = {
+import Phaser from 'phaser';
+import './style.css';
+
+const config = {
     width: 800,
     height: 600,
     scene: {
@@ -6,9 +9,11 @@ var config = {
         create: create,     
     }
 };
-var game = new Phaser.Game(config);
-function preload ()
-{
+
+const game = new Phaser.Game(config);
+let background = null;
+
+const preload = () => {
     this.load.image('background', 'https://raw.githubusercontent.com/prateeksawhney97/Spin-And-Win-Game-JavaScript/master/Assets/gift-box-bow-bokeh-christmas-hd-wallpaper-wallpaper-list.jpg?token=AIEJHUVLZUNSLVVEIGHOME265CDHM');
     this.load.image('mywheel', 'https://raw.githubusercontent.com/prateeksawhney97/Spin-And-Win-Game-JavaScript/master/Assets/wheel.png?token=AIEJHUQ3YRJ3TD5OKKQ2UCS65CDL6');
     this.load.image('pin', 'https://raw.githubusercontent.com/prateeksawhney97/Spin-And-Win-Game-JavaScript/master/Assets/pin.png?token=AIEJHUVO2BG5Q3LMEKJAGLK65DQVE');
@@ -20,9 +25,10 @@ function preload ()
     this.load.audio('sound','https://raw.githubusercontent.com/prateeksawhney97/Spin-And-Win-Game-JavaScript/master/Assets/sound.mp3?token=AIEJHUQ3OVWNLZO3BAZOFFK65CBTI');
     this.load.audio('drum','https://raw.githubusercontent.com/prateeksawhney97/Spin-And-Win-Game-JavaScript/master/Assets/drum.mp3?token=AIEJHUWNNKXYQMDHCQ6MOES65CBYE')
 }
+
 function create ()
 {
-    background=this.add.sprite(400,300,'background');
+    background = this.add.sprite(400,300,'background');
     this.pin=this.add.sprite(395,70,'pin').setScale(0.25);
     this.pin.depth=1;
     this.stand=this.add.sprite(410,570,'stand').setScale(0.15);
@@ -33,8 +39,8 @@ function create ()
     this.yougot.visible=false;
     this.restart=this.add.sprite(400,170,'restart').setScale(0.30);
     this.restart.visible=false;
-    this.soundd=this.sound.add('sound');
-    this.drum=this.sound.add('drum');
+    // this.soundd=this.sound.add('sound');
+    // this.drum=this.sound.add('drum');
     this.startBtn.on('pointerdown', spinWheel,this);  
 }
 function spinWheel(){
@@ -73,7 +79,7 @@ function spinWheel(){
     },7000);
     
 }
+
 function restart(){
-   this.scene.restart();
-    
+   this.scene.restart();  
 }
