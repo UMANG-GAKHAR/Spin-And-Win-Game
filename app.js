@@ -1,6 +1,6 @@
 var config = {
     width: 800,
-    height: 600,
+    height: 601,
     scene: {
         preload: preload,
         create: create,     
